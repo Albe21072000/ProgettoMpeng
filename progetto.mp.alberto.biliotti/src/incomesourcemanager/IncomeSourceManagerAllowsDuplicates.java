@@ -3,7 +3,7 @@ package incomesourcemanager;
 public class IncomeSourceManagerAllowsDuplicates extends AbstractIncomeSourceManager {
 
 	@Override
-	public Boolean addIncomeSource(IncomeSource incomeSource) {
+	public Boolean addIncomeSource(IncomeSource incomeSource) throws IllegalArgumentException {
 		boolean added= super.getIncomeSources().add(incomeSource);
 		super.notifyObservers();
 		return added;

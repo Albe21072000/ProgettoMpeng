@@ -13,7 +13,7 @@ public class LandRegistryObserver implements IncomeSourceManagerObserver {
 		manager.getIncomeSources().forEach((x)->x.accept(new LandPropertySquareMeterVisitor()));
 	}
 
-	AbstractIncomeSourceManager getPatr() {
+	AbstractIncomeSourceManager getManager() {
 		return manager;
 	}
 	private class LandPropertySquareMeterVisitor implements IncomeSourceVisitor<Integer>{

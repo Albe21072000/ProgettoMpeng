@@ -21,7 +21,7 @@ public class TestLandRegistryObserver {
 	@Test
 	public void testEmptyManager() {
 	assertThat(obs.getTotalSquareMeters()).isEqualTo(0);
-	assertThat(obs.getPatr()).isEqualTo(manager);
+	assertThat(obs.getManager()).isEqualTo(manager);
 	}
 	
 	@Test

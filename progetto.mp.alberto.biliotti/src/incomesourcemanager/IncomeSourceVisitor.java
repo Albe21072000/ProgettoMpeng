@@ -2,7 +2,7 @@ package incomesourcemanager;
 
 public interface IncomeSourceVisitor<T> {
 	
-	T visitLandProperty(LandProperty im);
+	T visitLandProperty(LandProperty lp);
 	
 	T visitGoldReserve(GoldReserve au);
 	
