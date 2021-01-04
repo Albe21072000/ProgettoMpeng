@@ -4,7 +4,7 @@ public class DataVisualizationObserverMock implements IncomeSourceManagerObserve
 	
 	private AbstractIncomeSourceManager manager;
 	
-	private double lastincomesourcevalue=0;
+	private double lastIncomeSourceValue=0;
 	
 	private double totalvalue=0;
 
@@ -13,8 +13,8 @@ public class DataVisualizationObserverMock implements IncomeSourceManagerObserve
 		totalvalue=manager.getTotalValue();
 	}
 
-	double getLastISValue() {
-		return lastincomesourcevalue;
+	double getLastIncomeSourceValue() {
+		return lastIncomeSourceValue;
 	}
 
 	double getTotalValue() {
@@ -27,7 +27,7 @@ public class DataVisualizationObserverMock implements IncomeSourceManagerObserve
 
 	@Override
 	public void update() {
-		lastincomesourcevalue=manager.getIncomeSources()
+		lastIncomeSourceValue=manager.getIncomeSources()
 				.get(manager.getIncomeSources().size()-1)
 				.getTotalValue();
 		this.totalvalue = manager.getTotalValue();

@@ -14,7 +14,7 @@ public final class LandProperty extends IncomeSource {
 		return squaremeters;
 	}
 
-	public double getValuePerSquareM() {
+	public double getValuePerSquareMeter() {
 		return valuepersquarem;
 	}
 

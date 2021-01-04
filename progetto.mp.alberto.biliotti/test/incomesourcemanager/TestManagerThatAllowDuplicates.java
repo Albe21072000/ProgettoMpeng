@@ -50,12 +50,12 @@ public class TestManagerThatAllowDuplicates {
 		LandProperty house= new LandProperty(200, 2000, "land test");
 		GoldReserve goldReserve=new GoldReserve(100, "gold test");
 		EuroCash euro=new EuroCash(2000, "eu test");
-		ArrayList<IncomeSource> iSources= new ArrayList<>();
-		iSources.add(house);
-		iSources.add(goldReserve);
-		iSources.add(euro);
-		iSources.add(house);
-		manager.addIncomeSourceCollection(iSources);
+		ArrayList<IncomeSource> incomeSources= new ArrayList<>();
+		incomeSources.add(house);
+		incomeSources.add(goldReserve);
+		incomeSources.add(euro);
+		incomeSources.add(house);
+		manager.addIncomeSourceCollection(incomeSources);
 		assertThat(manager.getIncomeSources()).containsExactly(house, goldReserve, euro,house);
 	}
 	@Test
@@ -63,12 +63,12 @@ public class TestManagerThatAllowDuplicates {
 		LandProperty house= new LandProperty(200, 2000, "land test");
 		GoldReserve goldReserve=new GoldReserve(100, "gold test");
 		EuroCash euro=new EuroCash(2000, "eu test");
-		ArrayList<IncomeSource> iSources= new ArrayList<>();
-		iSources.add(house);
-		iSources.add(goldReserve);
-		iSources.add(euro);
-		manager.addIncomeSourceCollection(iSources);
-		manager.addIncomeSourceCollection(iSources);
+		ArrayList<IncomeSource> incomeSources= new ArrayList<>();
+		incomeSources.add(house);
+		incomeSources.add(goldReserve);
+		incomeSources.add(euro);
+		manager.addIncomeSourceCollection(incomeSources);
+		manager.addIncomeSourceCollection(incomeSources);
 		assertThat(manager.getIncomeSources()).containsExactly(house, goldReserve, euro,house, goldReserve, euro);
 	}
 	@Test
@@ -76,13 +76,13 @@ public class TestManagerThatAllowDuplicates {
 		LandProperty house= new LandProperty(200, 2000, "land test");
 		GoldReserve goldReserve=new GoldReserve(100, "gold test");
 		EuroCash euro=new EuroCash(2000, "eu test");
-		ArrayList<IncomeSource> iSources= new ArrayList<>();
-		iSources.add(house);
-		iSources.add(goldReserve);
-		iSources.add(euro);
-		manager.getIncomeSources().addAll(iSources);
-		iSources.remove(goldReserve);
-		manager.removeIncomeSourceCollection(iSources);
+		ArrayList<IncomeSource> incomeSources= new ArrayList<>();
+		incomeSources.add(house);
+		incomeSources.add(goldReserve);
+		incomeSources.add(euro);
+		manager.getIncomeSources().addAll(incomeSources);
+		incomeSources.remove(goldReserve);
+		manager.removeIncomeSourceCollection(incomeSources);
 		assertThat(manager.getIncomeSources()).containsExactly(goldReserve);
 	}
 

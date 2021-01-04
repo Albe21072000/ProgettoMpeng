@@ -8,12 +8,12 @@ import org.junit.Test;
 public class TestAbstractManager {
 	private AbstractIncomeSourceManager manager;
 	@Before
-	public void instancemanager() {
+	public void instanceManager() {
 		manager=new IncomeSourceManagerWithoutDuplicates();
 	}
 
 	@Test
-	public void testEmpryManager() {
+	public void testEmptyManager() {
 		assertThat(manager.isEmpty()).isTrue();
 	}
 
@@ -46,8 +46,9 @@ public class TestAbstractManager {
 		.isFalse();
 		try {
 			manager.iterator().next();
-		} catch (UnsupportedOperationException e) {
-			assertThat(e).hasMessage("Iterator Terminated!");
+			fail("This method should throw an exception because the iterator should be Terminated!");
+		} catch (UnsupportedOperationException exception) {
+			assertThat(exception).hasMessage("Iterator Terminated!");
 		}
 	}
 

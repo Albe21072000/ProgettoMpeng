@@ -6,11 +6,11 @@ public class LandRegistryObserver implements IncomeSourceManagerObserver {
 
 	private AbstractIncomeSourceManager manager;
 
-	private int totalsquaremeters=0;
+	private int totalSquareMeters=0;
 
 	public LandRegistryObserver(AbstractIncomeSourceManager manager) {
 		this.manager = manager;
-		manager.getIncomeSources().forEach((x)->x.accept(new LandPropertySquareMeterVisitor()));
+		manager.getIncomeSources().forEach((incomeSource)->incomeSource.accept(new LandPropertySquareMeterVisitor()));
 	}
 
 	AbstractIncomeSourceManager getManager() {
@@ -18,24 +18,24 @@ public class LandRegistryObserver implements IncomeSourceManagerObserver {
 	}
 	private class LandPropertySquareMeterVisitor implements IncomeSourceVisitor<Integer>{
 		@Override
-		public Integer visitLandProperty(LandProperty lp) {
-			return totalsquaremeters+=lp.getSquareMeters();
+		public Integer visitLandProperty(LandProperty landProperty) {
+			return totalSquareMeters+=landProperty.getSquareMeters();
 		}
 
 		@Override
-		public Integer visitGoldReserve(GoldReserve au) {
+		public Integer visitGoldReserve(GoldReserve goldReserve) {
 			return null;
 		}
 
 		@Override
-		public Integer visitEuroCash(EuroCash eur) {
+		public Integer visitEuroCash(EuroCash euroCash) {
 			return null;
 		}
 
 	}
 
 	int getTotalSquareMeters() {
-		return totalsquaremeters;
+		return totalSquareMeters;
 	}
 
 	@Override

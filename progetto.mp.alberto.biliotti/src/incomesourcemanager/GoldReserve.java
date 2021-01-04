@@ -2,18 +2,18 @@ package incomesourcemanager;
 
 public class GoldReserve extends IncomeSource {
 	
-	private double goldgrams;
+	private double goldGrams;
 	
-	private final static int goldvaluepergram=50;
+	private final static int goldValuePerGram=50;
 
-	public GoldReserve(double grammioro, String name) {
-		super(grammioro*goldvaluepergram, name);
-		this.goldgrams=grammioro;
+	public GoldReserve(double goldGrams, String name) {
+		super(goldGrams*goldValuePerGram, name);
+		this.goldGrams=goldGrams;
 		
 	}
 
 	public double getGoldGrams() {
-		return goldgrams;
+		return goldGrams;
 	}
 
 
@@ -27,7 +27,7 @@ public class GoldReserve extends IncomeSource {
 		final int prime = 31;
 		int result = super.hashCode();
 		long temp;
-		temp = Double.doubleToLongBits(goldgrams);
+		temp = Double.doubleToLongBits(goldGrams);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
@@ -41,7 +41,7 @@ public class GoldReserve extends IncomeSource {
 		if (getClass() != obj.getClass())
 			return false;
 		GoldReserve other = (GoldReserve) obj;
-		if (Double.doubleToLongBits(goldgrams) != Double.doubleToLongBits(other.goldgrams))
+		if (Double.doubleToLongBits(goldGrams) != Double.doubleToLongBits(other.goldGrams))
 			return false;
 		return true;
 	}

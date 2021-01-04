@@ -25,31 +25,31 @@ public abstract class AbstractIncomeSourceManager {
 	
 	public abstract Boolean removeIncomeSource(IncomeSource incomeSource);
 	
-	public Boolean attachObserver(IncomeSourceManagerObserver obs) {
-		return observers.add(obs);
+	public Boolean attachObserver(IncomeSourceManagerObserver observer) {
+		return observers.add(observer);
 	}
 	
-	public Boolean removeObserver(IncomeSourceManagerObserver obs) {
-		return observers.remove(obs);
+	public Boolean removeObserver(IncomeSourceManagerObserver observer) {
+		return observers.remove(observer);
 	}
 	
 	public void notifyObservers() {
-		observers.forEach((x)->x.update());
+		observers.forEach((observer)->observer.update());
 	}
 	
-	public Boolean addIncomeSourceCollection(Collection<IncomeSource> coll) {
-		if(coll.isEmpty())
+	public Boolean addIncomeSourceCollection(Collection<IncomeSource> IncomesSourcesToAdd) {
+		if(IncomesSourcesToAdd.isEmpty())
 			return false;
 		ArrayList<IncomeSource> copy=incomeSources;
-		coll.forEach((x)->this.addIncomeSource(x));
+		IncomesSourcesToAdd.forEach((incomeSource)->this.addIncomeSource(incomeSource));
 		return !incomeSources.equals(copy);
 	}
 	
-	public Boolean removeIncomeSourceCollection(Collection<IncomeSource> coll) {
+	public Boolean removeIncomeSourceCollection(Collection<IncomeSource> IncomesSourcesToRemove) {
 		ArrayList<IncomeSource> copy=incomeSources;
-		if(coll.isEmpty())
+		if(IncomesSourcesToRemove.isEmpty())
 			return false;
-		coll.forEach((x)->this.removeIncomeSource(x));
+		IncomesSourcesToRemove.forEach((incomeSource)->this.removeIncomeSource(incomeSource));
 		return !incomeSources.equals(copy);
 	}
 	
@@ -81,12 +81,12 @@ public abstract class AbstractIncomeSourceManager {
 
 			@Override
 			public IncomeSource next() {
-			IncomeSource max= incomeSourcescopy.stream()
-					.max((x,y)->-1*x.getName()
-					.compareToIgnoreCase(y.getName())) 
+			IncomeSource maxIncomeSource= incomeSourcescopy.stream()
+					.max((firstIncomeSource,secondIncomeSource)->-1*firstIncomeSource.getName()
+					.compareToIgnoreCase(secondIncomeSource.getName())) 
 					.orElseThrow(()->new UnsupportedOperationException("Iterator Terminated!")); 
-			incomeSourcescopy.remove(max);
-				return max;
+			incomeSourcescopy.remove(maxIncomeSource);
+				return maxIncomeSource;
 			}
 		};
 		

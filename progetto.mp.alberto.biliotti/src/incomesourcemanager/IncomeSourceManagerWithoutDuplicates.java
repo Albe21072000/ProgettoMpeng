@@ -6,9 +6,9 @@ public final class IncomeSourceManagerWithoutDuplicates extends AbstractIncomeSo
 	public Boolean addIncomeSource(IncomeSource incomesource) {
 		if(super.getIncomeSources().contains(incomesource))
 			return false;
-		boolean aggiunto= super.getIncomeSources().add(incomesource);
+		boolean added= super.getIncomeSources().add(incomesource);
 		super.notifyObservers();
-		return aggiunto;
+		return added;
 	}
 
 	@Override

@@ -2,10 +2,10 @@ package incomesourcemanager;
 
 public interface IncomeSourceVisitor<T> {
 	
-	T visitLandProperty(LandProperty lp);
+	T visitLandProperty(LandProperty landProperty);
 	
-	T visitGoldReserve(GoldReserve au);
+	T visitGoldReserve(GoldReserve goldReserve);
 	
-	T visitEuroCash(EuroCash eur);
+	T visitEuroCash(EuroCash euroCash);
 
 }
